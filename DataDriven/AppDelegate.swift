@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     window?.makeKeyAndVisible()
     
     let viewController = ViewController()
+    viewController.viewModel = ProfileViewModel()
     window?.rootViewController = UINavigationController(rootViewController: viewController)
     
     return true

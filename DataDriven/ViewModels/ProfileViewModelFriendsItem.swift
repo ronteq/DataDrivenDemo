@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ProfileViewModeFriendsItem: ProfileViewModelItem{
+class ProfileViewModelFriendsItem: ProfileViewModelItem{
   
   var type: ProfileViewModelItemType {
     return .friend

@@ -23,9 +23,9 @@ class Profile{
         guard let body = json["data"] as? [String: Any] else { return nil }
         
         self.fullName = body["fullName"] as? String
-        self.pictureUrl = json["pictureUrl"] as? String
-        self.email = json["email"] as? String
-        self.about = json["about"] as? String
+        self.pictureUrl = body["pictureUrl"] as? String
+        self.email = body["email"] as? String
+        self.about = body["about"] as? String
         
         if let friends = body["friends"] as? [[String: Any]]{
           self.friends = friends.map { Friend(withDictionary: $0) }
