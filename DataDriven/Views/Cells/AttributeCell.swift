@@ -24,11 +24,13 @@ class AttributeCell: UITableViewCell{
     return label
   }()
   
-  var item: Attribute?{
+  var item: ProfileViewModelItem?{
     didSet{
       fillUI()
     }
   }
+  
+  var index: Int?
   
   override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -55,9 +57,11 @@ class AttributeCell: UITableViewCell{
   }
   
   fileprivate func fillUI(){
-    guard let item = item else { return }
-    leftLabel.text = item.key
-    rightLabel.text = item.value
+    guard let item = item as? ProfileViewModelAttributeItem,
+      let index = index else { return }
+    
+    leftLabel.text = item.getKey(for: index)
+    rightLabel.text = item.getValue(for: index)
   }
   
 }

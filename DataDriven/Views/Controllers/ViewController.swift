@@ -117,12 +117,14 @@ extension ViewController: UITableViewDataSource{
       
     case .friend:
       let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.friendCell, for: indexPath) as! FriendCell
-      cell.item = viewModel.friendIn(section: indexPath.section, row: indexPath.row)
+      cell.index = indexPath.row
+      cell.item = item
       return cell
       
     case .attribute:
       let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.attributeCell, for: indexPath) as! AttributeCell
-      cell.item = viewModel.attributeIn(section: indexPath.section, row: indexPath.row)
+      cell.index = indexPath.row
+      cell.item = item
       return cell
     }
   }

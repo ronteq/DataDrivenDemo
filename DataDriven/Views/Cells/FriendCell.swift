@@ -26,11 +26,13 @@ class FriendCell: UITableViewCell{
     return label
   }()
   
-  var item: Friend?{
+  var item: ProfileViewModelItem?{
     didSet{
       fillUI()
     }
   }
+  
+  var index: Int?
   
   override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -57,13 +59,11 @@ class FriendCell: UITableViewCell{
   }
   
   fileprivate func fillUI(){
-    guard let item = item else { return }
-    nameLabel.text = item.name
+    guard let item = item as? ProfileViewModelFriendsItem,
+      let index = index else { return }
     
-    if let pictureUrl = item.pictureUrl{
-      pictureImageView.image = UIImage(named: pictureUrl)
-    }
-    
+    nameLabel.text = item.getName(for: index)
+    pictureImageView.image = UIImage(named: item.getPictureUrl(for: index))
   }
   
 }

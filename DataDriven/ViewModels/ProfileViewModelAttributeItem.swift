@@ -21,10 +21,20 @@ class ProfileViewModelAttributeItem: ProfileViewModelItem{
     return attributes.count
   }
   
-  var attributes: [Attribute]
+  fileprivate let attributes: [Attribute]
   
   init(attributes: [Attribute]) {
     self.attributes = attributes
+  }
+  
+  //MARK: Interface
+  
+  func getKey(for index: Int) -> String{
+    return attributes[index].key ?? ""
+  }
+  
+  func getValue(for index: Int) -> String{
+    return attributes[index].value ?? ""
   }
   
 }

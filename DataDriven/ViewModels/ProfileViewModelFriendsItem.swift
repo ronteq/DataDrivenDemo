@@ -22,10 +22,19 @@ class ProfileViewModelFriendsItem: ProfileViewModelItem{
     return friends.count
   }
   
-  var friends: [Friend]
+  fileprivate let friends: [Friend]
   
   init(friends: [Friend]) {
     self.friends = friends
+  }
+  
+  //MARK: Interface
+  func getName(for index: Int) -> String{
+    return friends[index].name ?? ""
+  }
+  
+  func getPictureUrl(for index: Int) -> String{
+    return friends[index].pictureUrl ?? ""
   }
   
 }

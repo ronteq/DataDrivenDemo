@@ -24,18 +24,6 @@ class ProfileViewModel{
     return items[section]
   }
   
-  func friendIn(section: Int, row: Int) -> Friend?{
-    guard let item = items[section] as? ProfileViewModelFriendsItem else { return nil }
-    let friend = item.friends[row]
-    return friend
-  }
-  
-  func attributeIn(section: Int, row: Int) -> Attribute?{
-    guard let item = items[section] as? ProfileViewModelAttributeItem else { return nil }
-    let attribute = item.attributes[row]
-    return attribute
-  }
-  
   init(){
     guard let data = getDataFromFile("ServerData") else { return }
     guard let profile = Profile(data: data) else { return }
