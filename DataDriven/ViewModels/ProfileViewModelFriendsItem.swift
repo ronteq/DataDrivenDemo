@@ -19,10 +19,11 @@ class ProfileViewModelFriendsItem: ProfileViewModelItem{
   }
   
   var rowCount: Int {
-    return friends.count
+//    return friends.count
+    return 1
   }
   
-  fileprivate let friends: [Friend]
+  let friends: [Friend]
   
   init(friends: [Friend]) {
     self.friends = friends

@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     tv.translatesAutoresizingMaskIntoConstraints = false
     tv.delegate = self
     tv.dataSource = self
+    tv.allowsSelection = false
     tv.register(NameAndPictureCell.self, forCellReuseIdentifier: Identifiers.nameAndPictureCell)
     tv.register(AboutCell.self, forCellReuseIdentifier: Identifiers.aboutCell)
     tv.register(EmailCell.self, forCellReuseIdentifier: Identifiers.emailCell)
@@ -24,6 +25,7 @@ class ViewController: UIViewController {
   }()
   
   var viewModel: ProfileViewModel!
+  var friendItem: ProfileViewModelItem?
   
 }
 
@@ -76,9 +78,15 @@ extension ViewController: UITableViewDelegate{
     let item = viewModel.itemIn(section: indexPath.section)
     
     switch item.type{
-    case .nameAndPicture, .friend: return 100
+    case .nameAndPicture: return 100
+    case .friend: return ConstraintConstants.friendCellHeight
     default: return 50
     }
+  }
+  
+  func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    guard let friendCell = cell as? FriendCell else { return }
+    friendCell.setCollectionViewDataSourceDelegate(dataSourceDelegate: self, forRow: indexPath.row)
   }
   
 }
@@ -117,8 +125,10 @@ extension ViewController: UITableViewDataSource{
       
     case .friend:
       let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.friendCell, for: indexPath) as! FriendCell
-      cell.index = indexPath.row
-      cell.item = item
+//      use this when friendCell is just a UITableViewCell without collectionview inside
+//      cell.index = indexPath.row
+//      cell.item = item
+      friendItem = item
       return cell
       
     case .attribute:
@@ -131,16 +141,66 @@ extension ViewController: UITableViewDataSource{
   
 }
 
+//MARK: UICollectionViewDelegate
+
+extension ViewController: UICollectionViewDelegate{
+  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    guard let friendItem = friendItem as? ProfileViewModelFriendsItem else { return }
+    print(friendItem.friends[indexPath.item].name ?? "") //I CAN GET ID FOR A DETAIL CONTROLLER
+  }
+  
+}
+
+extension ViewController: UICollectionViewDelegateFlowLayout{
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    return CGSize(width: 150, height: ConstraintConstants.friendCellHeight)
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    return UIEdgeInsetsMake(0, 0, 0, 0)
+  }
+  
+}
+
+//MARK: UICollectionViewDataSource
+
+extension ViewController: UICollectionViewDataSource{
+  
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    guard let profileViewModelFriendsItem = friendItem as? ProfileViewModelFriendsItem else { return 0 }
+    return profileViewModelFriendsItem.friends.count
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifiers.friendCollectionCell, for: indexPath) as! CollectionFriendCell
+    
+    if let item = friendItem{
+      cell.index = indexPath.item
+      cell.item = item
+    }
+    
+    return cell
+  }
+  
+}
+
 //MARK: Constants
 
 extension ViewController{
   
-  fileprivate struct Identifiers{
+  struct Identifiers{
     static let nameAndPictureCell = "nameAndPictureCell"
     static let aboutCell = "aboutCell"
     static let emailCell = "emailCell"
     static let attributeCell = "attributeCell"
     static let friendCell = "friendCell"
+    static let friendCollectionCell = "friendCollectionCell"
+  }
+  
+  struct ConstraintConstants{
+    static let friendCellHeight: CGFloat = 120
   }
   
 }

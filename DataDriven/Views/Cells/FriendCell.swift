@@ -2,7 +2,7 @@
 //  FriendCell.swift
 //  DataDriven
 //
-//  Created by Daniel Fernandez on 11/14/17.
+//  Created by Daniel Fernandez on 11/20/17.
 //  Copyright © 2017 Daniel Fernandez. All rights reserved.
 //
 
@@ -10,29 +10,16 @@ import UIKit
 
 class FriendCell: UITableViewCell{
   
-  fileprivate let pictureImageView: UIImageView = {
-    let iv = UIImageView()
-    iv.translatesAutoresizingMaskIntoConstraints = false
-    iv.contentMode = .scaleAspectFill
-    iv.layer.cornerRadius = 40
-    iv.clipsToBounds = true
-    return iv
+  fileprivate let collectionView: UICollectionView = {
+    let layout = UICollectionViewFlowLayout()
+    layout.scrollDirection = .horizontal
+    let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+    cv.translatesAutoresizingMaskIntoConstraints = false
+    cv.alwaysBounceHorizontal = true
+    cv.backgroundColor = .white
+    cv.register(CollectionFriendCell.self, forCellWithReuseIdentifier: ViewController.Identifiers.friendCollectionCell)
+    return cv
   }()
-  
-  fileprivate let nameLabel: UILabel = {
-    let label = UILabel()
-    label.translatesAutoresizingMaskIntoConstraints = false
-    label.textColor = .darkGray
-    return label
-  }()
-  
-  var item: ProfileViewModelItem?{
-    didSet{
-      fillUI()
-    }
-  }
-  
-  var index: Int?
   
   override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -41,29 +28,29 @@ class FriendCell: UITableViewCell{
   }
   
   required init?(coder aDecoder: NSCoder) {
-    fatalError("Error coder on NameAndPictureCell")
+    fatalError("Error coder on ComplexCell")
   }
+  
+  //MARK: Initial setup
   
   fileprivate func setupViews(){
-    addSubview(pictureImageView)
-    addSubview(nameLabel)
-    
-    pictureImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16).isActive = true
-    pictureImageView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-    pictureImageView.widthAnchor.constraint(equalToConstant: 80).isActive = true
-    pictureImageView.heightAnchor.constraint(equalToConstant: 80).isActive = true
-    
-    nameLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-    nameLabel.leadingAnchor.constraint(equalTo: pictureImageView.trailingAnchor, constant: 16).isActive = true
-    nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
+    addSubview(collectionView)
+  
+    collectionView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+    collectionView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+    collectionView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+    collectionView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
   }
   
-  fileprivate func fillUI(){
-    guard let item = item as? ProfileViewModelFriendsItem,
-      let index = index else { return }
+  //MARK: Internal methods
+  
+  func setCollectionViewDataSourceDelegate<D: UICollectionViewDelegate & UICollectionViewDataSource>
+    (dataSourceDelegate: D, forRow row: Int){
     
-    nameLabel.text = item.getName(for: index)
-    pictureImageView.image = UIImage(named: item.getPictureUrl(for: index))
+    collectionView.delegate = dataSourceDelegate
+    collectionView.dataSource = dataSourceDelegate
+    collectionView.tag = row
+    collectionView.reloadData()
   }
   
 }

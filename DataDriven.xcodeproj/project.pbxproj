@@ -12,7 +12,7 @@
 		4C7F3D9E1FBBFA2E000AD1AF /* EmailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7F3D9D1FBBFA2E000AD1AF /* EmailCell.swift */; };
 		4C7F3DA01FBBFA6A000AD1AF /* AttributeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7F3D9F1FBBFA6A000AD1AF /* AttributeCell.swift */; };
 		4C7F3DA21FBBFBCE000AD1AF /* AboutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7F3DA11FBBFBCE000AD1AF /* AboutCell.swift */; };
-		4C7F3DA41FBBFBED000AD1AF /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7F3DA31FBBFBED000AD1AF /* FriendCell.swift */; };
+		4C7F3DA41FBBFBED000AD1AF /* FriendCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7F3DA31FBBFBED000AD1AF /* FriendCell2.swift */; };
 		974D6CA01FBBA1DA000365AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974D6C9F1FBBA1DA000365AC /* AppDelegate.swift */; };
 		974D6CA21FBBA1DA000365AC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974D6CA11FBBA1DA000365AC /* ViewController.swift */; };
 		974D6CA71FBBA1DA000365AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 974D6CA61FBBA1DA000365AC /* Assets.xcassets */; };
@@ -26,6 +26,8 @@
 		974D6CC31FBBB545000365AC /* ProfileViewModelAttributeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974D6CC21FBBB545000365AC /* ProfileViewModelAttributeItem.swift */; };
 		974D6CC51FBBB56B000365AC /* ProfileViewModelFriendsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974D6CC41FBBB56B000365AC /* ProfileViewModelFriendsItem.swift */; };
 		974D6CC71FBBB615000365AC /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974D6CC61FBBB615000365AC /* ProfileViewModel.swift */; };
+		97B803D11FC3663400075748 /* FriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B803D01FC3663400075748 /* FriendCell.swift */; };
+		97B803D31FC367CB00075748 /* CollectionFriendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B803D21FC367CB00075748 /* CollectionFriendCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +35,7 @@
 		4C7F3D9D1FBBFA2E000AD1AF /* EmailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailCell.swift; sourceTree = "<group>"; };
 		4C7F3D9F1FBBFA6A000AD1AF /* AttributeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributeCell.swift; sourceTree = "<group>"; };
 		4C7F3DA11FBBFBCE000AD1AF /* AboutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutCell.swift; sourceTree = "<group>"; };
-		4C7F3DA31FBBFBED000AD1AF /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
+		4C7F3DA31FBBFBED000AD1AF /* FriendCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell2.swift; sourceTree = "<group>"; };
 		974D6C9C1FBBA1DA000365AC /* DataDriven.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DataDriven.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		974D6C9F1FBBA1DA000365AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		974D6CA11FBBA1DA000365AC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -50,6 +52,8 @@
 		974D6CC21FBBB545000365AC /* ProfileViewModelAttributeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModelAttributeItem.swift; sourceTree = "<group>"; };
 		974D6CC41FBBB56B000365AC /* ProfileViewModelFriendsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModelFriendsItem.swift; sourceTree = "<group>"; };
 		974D6CC61FBBB615000365AC /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		97B803D01FC3663400075748 /* FriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCell.swift; sourceTree = "<group>"; };
+		97B803D21FC367CB00075748 /* CollectionFriendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionFriendCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +74,9 @@
 				4C7F3DA11FBBFBCE000AD1AF /* AboutCell.swift */,
 				4C7F3D9D1FBBFA2E000AD1AF /* EmailCell.swift */,
 				4C7F3D9F1FBBFA6A000AD1AF /* AttributeCell.swift */,
-				4C7F3DA31FBBFBED000AD1AF /* FriendCell.swift */,
+				4C7F3DA31FBBFBED000AD1AF /* FriendCell2.swift */,
+				97B803D01FC3663400075748 /* FriendCell.swift */,
+				97B803D21FC367CB00075748 /* CollectionFriendCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -221,16 +227,18 @@
 				974D6CC51FBBB56B000365AC /* ProfileViewModelFriendsItem.swift in Sources */,
 				974D6CBD1FBBB40F000365AC /* ProfileViewModelNameItem.swift in Sources */,
 				4C7F3DA21FBBFBCE000AD1AF /* AboutCell.swift in Sources */,
-				4C7F3DA41FBBFBED000AD1AF /* FriendCell.swift in Sources */,
+				4C7F3DA41FBBFBED000AD1AF /* FriendCell2.swift in Sources */,
 				974D6CA21FBBA1DA000365AC /* ViewController.swift in Sources */,
 				974D6CBF1FBBB501000365AC /* ProfileViewModelAboutItem.swift in Sources */,
 				974D6CBB1FBBB3E6000365AC /* ProfileViewModelItemType.swift in Sources */,
 				974D6CB21FBBAB3C000365AC /* Profile.swift in Sources */,
 				974D6CB91FBBB1BA000365AC /* ProfileViewModelItem.swift in Sources */,
 				4C7F3D9C1FBBF93C000AD1AF /* NameAndPictureCell.swift in Sources */,
+				97B803D31FC367CB00075748 /* CollectionFriendCell.swift in Sources */,
 				4C7F3D9E1FBBFA2E000AD1AF /* EmailCell.swift in Sources */,
 				974D6CC71FBBB615000365AC /* ProfileViewModel.swift in Sources */,
 				974D6CC31FBBB545000365AC /* ProfileViewModelAttributeItem.swift in Sources */,
+				97B803D11FC3663400075748 /* FriendCell.swift in Sources */,
 				974D6CC11FBBB521000365AC /* ProfileViewModelEmailItem.swift in Sources */,
 				4C7F3DA01FBBFA6A000AD1AF /* AttributeCell.swift in Sources */,
 				974D6CA01FBBA1DA000365AC /* AppDelegate.swift in Sources */,
